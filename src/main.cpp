@@ -12,28 +12,28 @@ using namespace std::experimental;
 
 static std::optional<std::vector<std::byte>> ReadFile(const std::string &path)
 {   
-    std::ifstream is{path, std::ios::binary | std::ios::ate};
+    std::ifstream is{path, std::ios::binary | std::ios::ate}; // opened in binary mode & ate = at the end
     if( !is )
         return std::nullopt;
     
-    auto size = is.tellg();
-    std::vector<std::byte> contents(size);    
+    auto size = is.tellg();                 // because the input stream is at the end of the file, tellg() tells size
+    std::vector<std::byte> contents(size);  // vector of bytes same size as the file is created
     
-    is.seekg(0);
-    is.read((char*)contents.data(), size);
+    is.seekg(0);                            // seeking back to beginning of file
+    is.read((char*)contents.data(), size);  // entire file is read into the contents vector
 
     if( contents.empty() )
         return std::nullopt;
     return std::move(contents);
 }
 
-int main(int argc, const char **argv)
+int main(int argc, const char **argv)       // argc os arg count, argv is array of arguments passed
 {    
-    std::string osm_data_file = "";
+    std::string osm_data_file = "";         // searches for "-f" in argument array and then...
     if( argc > 1 ) {
         for( int i = 1; i < argc; ++i )
             if( std::string_view{argv[i]} == "-f" && ++i < argc )
-                osm_data_file = argv[i];
+                osm_data_file = argv[i];    // ... stores the file name into osm_data_file
     }
     else {
         std::cout << "Usage: [executable] [-f filename.osm]" << std::endl;    
