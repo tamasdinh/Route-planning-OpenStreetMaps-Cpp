@@ -54,11 +54,22 @@ int main(int argc, const char **argv)       // argc os arg count, argv is array 
     // user input for these values using std::cin. Pass the user input to the
     // RoutePlanner object below.
 
+    float start_x, start_y, end_x, end_y;
+    std::cout << "The map coordinates begin at (0,0) in the lower left corner and end at (100,100) in the upper right" << std::endl;
+    std::cout << "Please input coordinate start_x [0-100]: ";
+    std::cin >> start_x;
+    std::cout << "Please input coordinate start_y [0-100]: ";
+    std::cin >> start_y;
+    std::cout << "Please input coordinate end_x [0-100]: ";
+    std::cin >> end_x;
+    std::cout << "Please input coordinate end_y [0-100]: ";
+    std::cin >> end_y;
+
     // Build Model.
     RouteModel model{osm_data};
 
     // Perform search and render results.
-    RoutePlanner route_planner{model, 10, 10, 90, 90};
+    RoutePlanner route_planner{model, start_x, start_y, end_x, end_y};
     route_planner.AStarSearch();
     std::cout << "Distance: " << route_planner.GetDistance() << " meters" << std::endl;
     Render render{model};
