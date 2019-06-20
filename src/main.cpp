@@ -59,7 +59,7 @@ int main(int argc, const char **argv)       // argc os arg count, argv is array 
 
     // Perform search and render results.
     RoutePlanner route_planner{model, 10, 10, 90, 90};
-    RoutePlanner::AStarSearch(route_planner);
+    route_planner.AStarSearch();
     std::cout << "Distance: " << route_planner.GetDistance() << " meters" << std::endl;
     Render render{model};
 
