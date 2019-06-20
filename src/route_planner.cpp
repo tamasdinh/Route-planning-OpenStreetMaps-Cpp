@@ -11,7 +11,7 @@ RoutePlanner::RoutePlanner(RouteModel &model, float start_x, float start_y, floa
     this->end_node = &m_Model.FindClosestNode(end_x, end_y);
 }
 
-std::vector<Node> RoutePlanner::ConstructFinalPath(RouteModel::Node *current_node) {
+std::vector<RouteModel::Node> RoutePlanner::ConstructFinalPath(RouteModel::Node *current_node) {
     std::vector<RouteModel::Node> path_found;
     this->distance = 0.0f;
 
