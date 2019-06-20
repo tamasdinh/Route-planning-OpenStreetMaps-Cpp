@@ -40,7 +40,7 @@ void RouteModel::Node::FindNeighbors() {
     for (auto &road : parent_model->node_to_road[this->index]) {
         Node* neighbor = this->FindNeighbor(parent_model->Ways()[road->way].nodes);
         if (neighbor != nullptr)
-            this->neighbors.emplace_back(neighbor);
+            this->neighbors.emplace_back(*neighbor);
     }
 
 }
