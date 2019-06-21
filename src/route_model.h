@@ -24,7 +24,6 @@ class RouteModel : public Model {
             return std::sqrt(std::pow(this->x - other.x, 2) + std::pow(this->y - other.y, 2));
         }
 
-
         void FindNeighbors();
 
       private:
