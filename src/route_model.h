@@ -16,7 +16,7 @@ class RouteModel : public Model {
 
         Node *parent = nullptr;
         float h_value = std::numeric_limits<float>::max();
-        float g_value = 0.0;
+        float g_value = 0.0f;
         bool visited = false;
         std::vector<Node*> neighbors;
 
@@ -29,7 +29,7 @@ class RouteModel : public Model {
 
       private:
         int index;
-        RouteModel * parent_model = nullptr;
+        RouteModel *parent_model = nullptr;
 
         Node* FindNeighbor(std::vector<int> node_indices);
 

@@ -28,7 +28,7 @@ RouteModel::Node* RouteModel::Node::FindNeighbor(std::vector<int> node_indices) 
 
     for (int index : node_indices) {
         node = parent_model->SNodes()[index];
-        if (!node.visited && this->Distance(node) > 0) {
+        if (!node.visited && this->Distance(node) != 0) {
             if (closest_node == nullptr || this->Distance(node) < this->Distance(*closest_node))
                 closest_node = &parent_model->SNodes()[index];
         }
